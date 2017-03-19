@@ -35,6 +35,7 @@ public class PlayerItems : MonoBehaviour
             scoreManager.AddPoints(pointsForItem);
             print("Spear count:" + spear);
             other.gameObject.SetActive(false);
+
         }
         else if (other.tag == "Ladder")
         {
