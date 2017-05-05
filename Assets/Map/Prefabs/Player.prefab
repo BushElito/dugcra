@@ -1149,6 +1149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4292620229810106}
   - component: {fileID: 114013699985191128}
+  - component: {fileID: 114025154606578750}
   m_Layer: 0
   m_Name: SettingsManager
   m_TagString: Untagged
@@ -1613,6 +1614,21 @@ MonoBehaviour:
   backButton: {fileID: 114618014827528310}
   musicSource: {fileID: 82931105996301008}
   soundSource: {fileID: 82242708074355814}
+--- !u!114 &114025154606578750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876640623496296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa6559bb685537468190e58ed08878b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 1604452033352458}
+  mapCamera: {fileID: 1318533149782346}
+  pauseMenu: {fileID: 1617579177230638}
+  mainCamera: {fileID: 0}
 --- !u!114 &114066596602832248
 MonoBehaviour:
   m_ObjectHideFlags: 1

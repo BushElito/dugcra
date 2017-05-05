@@ -7,9 +7,6 @@ public class mapEscape : MonoBehaviour {
     public GameObject map;
     public GameObject mapCamera;
     public GameObject pauseMenu;
-    public GameObject mainCamera;
-
-
 
     // Use this for initialization
     void Start () {
