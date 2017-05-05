@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000091552734}
   m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9692542
@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 26671470}
   - component: {fileID: 26671472}
   - component: {fileID: 26671473}
+  - component: {fileID: 26671474}
   m_Layer: 0
   m_Name: Map maker manager
   m_TagString: Untagged
@@ -297,6 +298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126eeed272e9f0e4e981e0af238841ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &26671474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26671469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c0542649d319b429818026336ff531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelMenu: {fileID: 2091835029}
+  placablesMenu: {fileID: 2033017562}
 --- !u!1 &126048030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,7 +3601,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1796486052}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.654
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
