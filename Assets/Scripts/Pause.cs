@@ -6,7 +6,7 @@ public class Pause : MonoBehaviour {
     
     public GameObject pauseMenu;
     public GameObject map;
-    bool isPaused = false;
+    public bool isPaused = false;
 
 	// Use this for initialization
 	void Start () {
@@ -23,13 +23,14 @@ public class Pause : MonoBehaviour {
     }
     public void Pause_action(bool pause = false)
     {
-        if (!pause)
-        {
+        isPaused = pause;
+        if (!isPaused)
+        {            
             Time.timeScale = 1;
         }
         else
         {
-        Time.timeScale = 0;
+            Time.timeScale = 0;
         }
     }
     public void Quit()
