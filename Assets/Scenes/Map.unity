@@ -184,7 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   map: {fileID: 0}
-  isPaused: 0
 --- !u!4 &248156584
 Transform:
   m_ObjectHideFlags: 0
