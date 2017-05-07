@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject map;
     public bool isPaused = false;
+    Animator anim;
 
     public ScoreManager scoreManager;
     private GameSounds gameSounds;
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
         gameSounds = GetComponent<GameSounds>();
         rnd = new System.Random();
         Time.timeScale = 1;
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -81,7 +84,8 @@ public class Player : MonoBehaviour
     }
     public void Pause_action(bool pause = false)
     {
-        if (!pause)
+        isPaused = pause;
+        if (!isPaused)
         {
             Time.timeScale = 1;
         }
@@ -123,12 +127,25 @@ public class Player : MonoBehaviour
             //}
             if (!walldetect && !fogDetect)
             {
-                gameSounds.PlaySound(rnd.Next(0, 2));
+                gameSounds.PlaySound(rnd.Next(0, 2));                
                 rb2D.MovePosition(end);
-            }
+            }            
         }
         StartCoroutine(Delay());
     }
+
+    public void LateUpdate()
+    {
+        if (horizontal != 0)
+        {
+            anim.SetInteger("Value", 1);
+        }
+        else if (vertical != 0)
+        {
+            anim.SetInteger("Value", 0);
+        }
+    }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(turnDelay);
