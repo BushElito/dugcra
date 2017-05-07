@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Change_scene : MonoBehaviour
@@ -16,6 +18,27 @@ public class Change_scene : MonoBehaviour
 
         Time.timeScale = 1;
         SceneManager.LoadScene(levelScene);
+    }
+
+    public void ToFirstLevel()
+    {
+        try
+        {
+            if (!Directory.Exists("Levels/"))
+            {
+                Directory.CreateDirectory("Levels/");
+            }
+            var dir = new List<string>(Directory.GetDirectories("Levels/"));
+            dir.Sort(new NaturalStringComparer());
+            LevelManager.levelName = dir[0].Substring(7);
+            LevelManager.isRandom = false;
+        }
+        catch (System.Exception)
+        {
+            LevelManager.isRandom = true;
+        }       
+                
+        SceneManager.LoadScene(1);
     }
 
     public void NextLevel()

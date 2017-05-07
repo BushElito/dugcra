@@ -45,12 +45,14 @@ public class Player : MonoBehaviour
             return;
         }
         else if (!loaded)
-        {          
+        {        
+             
             loaded = true;
             Grid g = fogWorld.GetGrid(world.startingGrid.x, world.startingGrid.y);
             g.SetTile(world.startingPoint.x, world.startingPoint.y, new GridTile(GridTile.TileTypes.Empty));
             g.update = true;
             transform.position = new Vector3(Mathf.FloorToInt(world.startingPoint.x + g.pos.x) + 0.5f, Mathf.FloorToInt(world.startingPoint.y + g.pos.y) + 0.5f, transform.position.z);
+            Camera.main.transform.position = new Vector3(Mathf.FloorToInt(world.startingPoint.x + g.pos.x) + 0.5f, Mathf.FloorToInt(world.startingPoint.y + g.pos.y) + 0.5f, transform.position.z);
         }
         horizontal = 0;
         vertical = 0;
