@@ -34,7 +34,7 @@ public class MenuEscape : MonoBehaviour {
                 else
                 {
                     levelsMenu.SetActive(false);
-                    newGameMenu.SetActive(true);
+                    mainMenu.SetActive(true);
                 }
             }
         }
