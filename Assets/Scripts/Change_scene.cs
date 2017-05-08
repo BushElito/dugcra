@@ -20,6 +20,15 @@ public class Change_scene : MonoBehaviour
         SceneManager.LoadScene(levelScene);
     }
 
+    public void ToRandomLevel()
+    {
+        LevelManager.levelName = "";
+        LevelManager.isRandom = true;
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
+
     public void ToFirstLevel()
     {
         try
@@ -36,8 +45,8 @@ public class Change_scene : MonoBehaviour
         catch (System.Exception)
         {
             LevelManager.isRandom = true;
-        }       
-                
+        }
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 
