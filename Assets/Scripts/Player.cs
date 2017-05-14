@@ -138,13 +138,21 @@ public class Player : MonoBehaviour
 
     public void LateUpdate()
     {
-        if (horizontal != 0)
+        if (horizontal > 0)
+        {
+            anim.SetInteger("Value", 2);
+        }
+        else if (horizontal < 0)
         {
             anim.SetInteger("Value", 1);
         }
-        else if (vertical != 0)
+        else if (vertical > 0)
         {
             anim.SetInteger("Value", 0);
+        }
+        else if (vertical < 0)
+        {
+            anim.SetInteger("Value", 3);
         }
     }
 
