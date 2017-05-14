@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
                 item.Value.clear = true;
             }           
         }
+        
     }
     public void Pause_action(bool pause = false)
     {

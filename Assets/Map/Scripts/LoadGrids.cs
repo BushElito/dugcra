@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class LoadGrids : MonoBehaviour
 {
@@ -22,6 +20,8 @@ public class LoadGrids : MonoBehaviour
                 gridPositions.Add(new WorldPos(x, y));
             }
         }
+
+        SaveAndLoadManager.GetLevelConfig();
     }
 
     void Update()
@@ -93,6 +93,7 @@ public class LoadGrids : MonoBehaviour
 
     }
 
+    //Neutralize this if some grids don't appear
     void DeleteGrids()
     {
         if (timer == 10)

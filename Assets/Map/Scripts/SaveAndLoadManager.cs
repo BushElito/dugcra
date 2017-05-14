@@ -66,14 +66,6 @@ public static class SaveAndLoadManager
         {
             return false;
         }
-        if (!File.Exists(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg"))
-        {
-            FileStream fi = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
-            StreamWriter writer = new StreamWriter(fi);
-            writer.Write("gridSize=" + Grid.gridSize);
-            writer.Close();
-            fi.Close();                           
-        }
 
         Stream file = new FileStream(SaveLocation(grid.ToString(), LevelManager.levelName), FileMode.Open);
         StreamReader text = new StreamReader(file);
@@ -95,7 +87,22 @@ public static class SaveAndLoadManager
         {
             Debug.Log(grid);
         }
-        grid.update = true;
+        grid.update = true;               
+
+        return true;
+    }
+    #endregion
+
+    public static void GetLevelConfig()
+    {
+        if (!File.Exists(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg"))
+        {
+            FileStream fi = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+            StreamWriter writer = new StreamWriter(fi);
+            writer.Write("gridSize=" + Grid.gridSize);
+            writer.Close();
+            fi.Close();
+        }
 
         FileStream f = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.Open);
         StreamReader reader = new StreamReader(f);
@@ -110,9 +117,5 @@ public static class SaveAndLoadManager
         }
         f.Close();
         reader.Close();
-               
-
-        return true;
     }
-    #endregion
 }

@@ -5,7 +5,6 @@ using System;
 
 public class World : MonoBehaviour
 {
-
     public Dictionary<WorldPos, Grid> grids = new Dictionary<WorldPos, Grid>();
     public GameObject gridPrefab;
     public bool isFogGenerator = false;
