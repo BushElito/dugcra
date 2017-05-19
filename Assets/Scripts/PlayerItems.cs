@@ -59,7 +59,7 @@ public class PlayerItems : MonoBehaviour
         {
             if (spear <= 0)
             {
-                
+                scoreManager.isDead = true;
                 game_over_text.text = "You got butchered by the monster.";
                 //print("Game over...:");
                 game_over.SetActive(true);
@@ -80,6 +80,7 @@ public class PlayerItems : MonoBehaviour
         {
             if (ladder <= 0)
             {
+                scoreManager.isDead = true;
                 Time.timeScale = 0;
                 game_over_text.text = "You died in agony inside a pit.";
                 //print("Game over...:");

@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Change_scene : MonoBehaviour
 {
+    public ScoreManager scoreManager;
+
     public void ChangeToScene(int sceneToChangeTo)
     {
+        if (sceneToChangeTo == 0)
+        {
+            scoreManager.isDead = true;
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneToChangeTo);
     }

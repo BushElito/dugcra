@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
 
     public static int score;
+    public bool isDead;
 
     public static int highscore;
+    public static int highscore2;
+    public static int highscore3;
 
     public Text scoreText;
 
     void Start()
     {
+        isDead = false;
 
         score = PlayerPrefs.GetInt("score");
         scoreText.text = "Score: " + score;
@@ -20,13 +24,31 @@ public class ScoreManager : MonoBehaviour {
         PlayerPrefs.SetInt("score", 0);
 
         highscore = PlayerPrefs.GetInt("highscore", highscore);
+        highscore2 = PlayerPrefs.GetInt("highscore2", highscore2);
+        highscore3 = PlayerPrefs.GetInt("highscore3", highscore3);
     }
     void Update()
     {
-        if (score > highscore)
+        if (score > highscore3)
         {
-            highscore = score;
-            PlayerPrefs.SetInt("highscore", highscore);
+            if (score >= highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetInt("highscore", highscore);
+            }
+            else if (isDead)
+            {
+                if (score >= highscore2)
+                {
+                    highscore2 = score;
+                    PlayerPrefs.SetInt("highscore2", highscore2);
+                }
+                else
+                {
+                    highscore3 = score;
+                    PlayerPrefs.SetInt("highscore3", highscore3);
+                }
+            }
         }
     }
 

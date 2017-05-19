@@ -3140,6 +3140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126eeed272e9f0e4e981e0af238841ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 114807387371039576}
 --- !u!114 &114607093326738434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3793,6 +3794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e840f923b9825e843ab045d3f3fceaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   scoreText: {fileID: 114740206651765928}
 --- !u!114 &114810741462077592
 MonoBehaviour:
