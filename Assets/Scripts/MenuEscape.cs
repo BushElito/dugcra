@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuEscape : MonoBehaviour {
-
+public class MenuEscape : MonoBehaviour
+{
     public GameObject mainMenu;
     public GameObject newGameMenu;
     public GameObject settingsMenu;
     public GameObject levelsMenu;
-
+    public GameObject HighScoreMenu;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (!mainMenu.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,9 +33,14 @@ public class MenuEscape : MonoBehaviour {
                     settingsMenu.SetActive(false);
                     mainMenu.SetActive(true);
                 }
-                else
+                else if (levelsMenu.activeInHierarchy)
                 {
                     levelsMenu.SetActive(false);
+                    mainMenu.SetActive(true);
+                }
+                else
+                {
+                    HighScoreMenu.SetActive(false);
                     mainMenu.SetActive(true);
                 }
             }
