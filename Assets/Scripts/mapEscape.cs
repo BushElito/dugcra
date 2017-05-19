@@ -7,6 +7,8 @@ public class mapEscape : MonoBehaviour {
     public GameObject map;
     public GameObject mapCamera;
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
+    public GameObject pauseCanvas;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +24,14 @@ public class mapEscape : MonoBehaviour {
                 map.SetActive(false);
                 mapCamera.SetActive(false);
                 pauseMenu.SetActive(true);
+            }
+        }
+        else if (settingsMenu.activeInHierarchy)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                settingsMenu.SetActive(false);
+                pauseCanvas.SetActive(true);
             }
         }
     }

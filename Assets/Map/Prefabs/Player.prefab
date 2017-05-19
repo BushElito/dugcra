@@ -1712,6 +1712,8 @@ MonoBehaviour:
   map: {fileID: 1604452033352458}
   mapCamera: {fileID: 1318533149782346}
   pauseMenu: {fileID: 1617579177230638}
+  settingsMenu: {fileID: 1460631887037700}
+  pauseCanvas: {fileID: 1669477082134522}
 --- !u!114 &114066596602832248
 MonoBehaviour:
   m_ObjectHideFlags: 1
