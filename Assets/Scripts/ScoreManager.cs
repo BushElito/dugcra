@@ -23,6 +23,10 @@ public class ScoreManager : MonoBehaviour {
 
         PlayerPrefs.SetInt("score", 0);
 
+        PlayerPrefs.SetInt("highscore", 0);
+        PlayerPrefs.SetInt("highscore2", 0);
+        PlayerPrefs.SetInt("highscore3", 0);
+
         highscore = PlayerPrefs.GetInt("highscore", highscore);
         highscore2 = PlayerPrefs.GetInt("highscore2", highscore2);
         highscore3 = PlayerPrefs.GetInt("highscore3", highscore3);
