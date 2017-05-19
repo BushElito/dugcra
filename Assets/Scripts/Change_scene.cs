@@ -9,7 +9,7 @@ public class Change_scene : MonoBehaviour
 
     public void ChangeToScene(int sceneToChangeTo)
     {
-        if (sceneToChangeTo == 0)
+        if (scoreManager != null)
         {
             scoreManager.isDead = true;
         }
