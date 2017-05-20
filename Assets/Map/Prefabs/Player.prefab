@@ -2413,7 +2413,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bedabb96d0e220941ad339ecdbd775c5, type: 3}
   - {fileID: 8300000, guid: 7ed79b9173f195547a94c170a0834106, type: 3}
   - {fileID: 8300000, guid: b6b0a2335ca197e46b5b30f78afcea46, type: 3}
-  - {fileID: 8300000, guid: d11311476f7e01948a43f37a8cf501a4, type: 3}
+  - {fileID: 0}
 --- !u!114 &114304392183692228
 MonoBehaviour:
   m_ObjectHideFlags: 1

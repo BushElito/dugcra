@@ -24,6 +24,8 @@ public class PlayerItems : MonoBehaviour
     private GameSounds gameSounds;
     public Text game_over_text;
 
+    public Animator anim;
+
     void Start()
     {
         spear = 0;

@@ -45,8 +45,8 @@ public class Player : MonoBehaviour
             return;
         }
         else if (!loaded)
-        {        
-             
+        {
+
             loaded = true;
             Grid g = fogWorld.GetGrid(world.startingGrid.x, world.startingGrid.y);
             g.SetTile(world.startingPoint.x, world.startingPoint.y, new GridTile(GridTile.TileTypes.Empty));
@@ -81,9 +81,9 @@ public class Player : MonoBehaviour
             foreach (var item in fogWorld.grids)
             {
                 item.Value.clear = true;
-            }           
+            }
         }
-        
+
     }
     public void Pause_action(bool pause = false)
     {
@@ -130,30 +130,37 @@ public class Player : MonoBehaviour
             //}
             if (!walldetect && !fogDetect)
             {
-                gameSounds.PlaySound(rnd.Next(0, 2));                
+                gameSounds.PlaySound(rnd.Next(0, 2));
                 rb2D.MovePosition(end);
-            }            
+            }
         }
         StartCoroutine(Delay());
     }
 
     public void LateUpdate()
     {
-        if (horizontal > 0)
+        if (Time.timeScale == 1 && !scoreManager.isDead)
         {
-            anim.SetInteger("Value", 2);
+            if (horizontal > 0)
+            {
+                anim.SetInteger("Value", 2);
+            }
+            else if (horizontal < 0)
+            {
+                anim.SetInteger("Value", 1);
+            }
+            else if (vertical > 0)
+            {
+                anim.SetInteger("Value", 0);
+            }
+            else if (vertical < 0)
+            {
+                anim.SetInteger("Value", 3);
+            }
         }
-        else if (horizontal < 0)
+        else if (scoreManager.isDead)
         {
-            anim.SetInteger("Value", 1);
-        }
-        else if (vertical > 0)
-        {
-            anim.SetInteger("Value", 0);
-        }
-        else if (vertical < 0)
-        {
-            anim.SetInteger("Value", 3);
+            anim.SetInteger("Value", 4);
         }
     }
 
