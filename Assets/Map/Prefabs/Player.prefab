@@ -1409,7 +1409,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!82 &82242708074355814
 AudioSource:
@@ -1642,6 +1642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722717478f3d2a6408aaf591ea7da752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticles: {fileID: 1000013144623386, guid: c827dd53b4b5d39498893fda564ec8df,
+    type: 2}
+  defeatHole: {fileID: 1281986771722684, guid: c4d8f533b8f93db4f909eee403985375, type: 2}
+  itemPickUp: {fileID: 1663653641065112, guid: cb374da6dedf8764195194e5e6fe1120, type: 2}
   game_over: {fileID: 1033608820279452}
   next_level: {fileID: 1121782070884600}
   game_finished: {fileID: 1892682983387032}
@@ -2409,6 +2413,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bedabb96d0e220941ad339ecdbd775c5, type: 3}
   - {fileID: 8300000, guid: 7ed79b9173f195547a94c170a0834106, type: 3}
   - {fileID: 8300000, guid: b6b0a2335ca197e46b5b30f78afcea46, type: 3}
+  - {fileID: 8300000, guid: d11311476f7e01948a43f37a8cf501a4, type: 3}
 --- !u!114 &114304392183692228
 MonoBehaviour:
   m_ObjectHideFlags: 1

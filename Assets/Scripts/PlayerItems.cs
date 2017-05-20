@@ -14,6 +14,9 @@ public class PlayerItems : MonoBehaviour
     private static int pointsForItem;
     private static int pointsForEnemy;
     private static int pointsForChest;
+    public GameObject deathParticles;
+    public GameObject defeatHole;
+    public GameObject itemPickUp;
     public GameObject game_over;
     public GameObject next_level;
     public GameObject game_finished;
@@ -41,6 +44,7 @@ public class PlayerItems : MonoBehaviour
         {
             gameSounds.PlaySound(4);
             spear++;
+            Instantiate(itemPickUp, transform.position, Quaternion.identity);
             scoreManager.AddPoints(pointsForItem);
            // print("Spear count:" + spear);
             other.gameObject.SetActive(false);
@@ -50,6 +54,7 @@ public class PlayerItems : MonoBehaviour
         {
             gameSounds.PlaySound(4);
             ladder++;
+            Instantiate(itemPickUp, transform.position, Quaternion.identity);
             scoreManager.AddPoints(pointsForItem);
             //print("Ladder count:" + ladder);
             other.gameObject.SetActive(false);
@@ -61,7 +66,7 @@ public class PlayerItems : MonoBehaviour
             {
                 scoreManager.isDead = true;
                 game_over_text.text = "You got butchered by the monster.";
-                //print("Game over...:");
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
                 game_over.SetActive(true);
                 gameSounds.PlaySound(2);
                 Time.timeScale = 0;
@@ -69,8 +74,9 @@ public class PlayerItems : MonoBehaviour
             }
             else
             {
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
                 spear--;
-                gameSounds.PlaySound(5);
+                gameSounds.PlaySound(9);
                 //print("Spear count:" + spear);
                 scoreManager.AddPoints(pointsForEnemy);
                 other.gameObject.SetActive(false);
@@ -83,6 +89,7 @@ public class PlayerItems : MonoBehaviour
                 scoreManager.isDead = true;
                 Time.timeScale = 0;
                 game_over_text.text = "You died in agony inside a pit.";
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
                 //print("Game over...:");
                 game_over.SetActive(true);
                 gameSounds.PlaySound(2);
@@ -93,6 +100,7 @@ public class PlayerItems : MonoBehaviour
                 ladder--;
                 gameSounds.PlaySound(5);
                 //print("Ladder count:" + ladder);
+                Instantiate(defeatHole, transform.position, Quaternion.identity);
                 scoreManager.AddPoints(pointsForEnemy);
                 other.gameObject.SetActive(false);
             }
