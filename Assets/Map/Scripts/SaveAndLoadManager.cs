@@ -29,7 +29,7 @@ public static class SaveAndLoadManager
     {
         if (!Directory.Exists(directory))
         {
-            Directory.CreateDirectory(directory);            
+            Directory.CreateDirectory(directory);
         }
     }
 
@@ -72,7 +72,7 @@ public static class SaveAndLoadManager
         string t = text.ReadToEnd();
         file.Close();
         text.Close();
-        
+
 
         Save save = JsonUtility.FromJson<Save>(t);
 
@@ -87,7 +87,7 @@ public static class SaveAndLoadManager
         {
             Debug.Log(grid);
         }
-        grid.update = true;               
+        grid.update = true;
 
         return true;
     }
@@ -99,7 +99,8 @@ public static class SaveAndLoadManager
         {
             FileStream fi = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fi);
-            writer.Write("gridSize=" + Grid.gridSize);
+            writer.WriteLine("gridSize=" + Grid.gridSize);
+            writer.Write("unlocked=false");
             writer.Close();
             fi.Close();
         }
@@ -117,5 +118,50 @@ public static class SaveAndLoadManager
         }
         f.Close();
         reader.Close();
+    }
+
+    public static Level GetLevelConfig(Level level)
+    {
+        if (!File.Exists(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg"))
+        {
+            FileStream fi = new FileStream(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+            StreamWriter writer = new StreamWriter(fi);
+            writer.WriteLine("gridSize=" + Grid.gridSize);
+            writer.Write("unlocked=" + level.unlocked);
+            writer.Close();
+            fi.Close();
+        }
+
+        FileStream f = new FileStream(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg", FileMode.Open);
+        StreamReader reader = new StreamReader(f);
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            if (line.StartsWith("gridSize="))
+            {
+                int index = line.IndexOf('=');
+                level.size = int.Parse(line.Substring(index + 1));
+            }
+            if (line.StartsWith("unlocked="))
+            {
+                int index = line.IndexOf('=');
+                level.unlocked = bool.Parse(line.Substring(index + 1));
+            }
+        }
+        f.Close();
+        reader.Close();
+        return level;
+    }
+
+    public static void SaveLevelConfig(Level level)
+    {
+        File.WriteAllText(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", string.Empty);
+        FileStream f = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+        
+        StreamWriter writer = new StreamWriter(f);                
+        writer.WriteLine("gridSize=" + Grid.gridSize);
+        writer.Write("unlocked=" + level.unlocked);
+        writer.Close();
+        f.Close();
     }
 }

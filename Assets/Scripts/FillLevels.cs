@@ -25,7 +25,8 @@ public class FillLevels : MonoBehaviour
         foreach (var item in directories)
         {
             string levelName = item.Substring(7);
-            LevelManager.levels.Add(levelName);
+            Level level = SaveAndLoadManager.GetLevelConfig(new Level(levelName));
+            LevelManager.levels.Add(level);
         }
     }
 
@@ -36,7 +37,18 @@ public class FillLevels : MonoBehaviour
             string levelName = item.Substring(7);
             GameObject level = Instantiate(levelPrefab, content.transform);
             level.transform.GetChild(0).GetComponent<Text>().text = levelName.Replace('_', ' ');
-            level.GetComponent<Button>().onClick.AddListener(delegate { Change_scene.ChangeToLevel(1, levelName, false); });
+            var value = LevelManager.levels.Find(o => o.Equals(levelName));
+            if (value != null)
+            {
+                if (value.unlocked)
+                {
+                    level.GetComponent<Button>().onClick.AddListener(delegate { Change_scene.ChangeToLevel(1, levelName, false); });
+                }
+                else
+                {
+                    level.transform.GetChild(0).GetComponent<Text>().text += " (locked)";
+                }
+            }
         }
     }
 

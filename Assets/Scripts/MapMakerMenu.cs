@@ -40,7 +40,8 @@ public class MapMakerMenu : MonoBehaviour
             GameObject level = Instantiate(levelPrefab, customLevelContent.transform);
             level.transform.GetChild(0).GetComponent<Text>().text = item;
             string levelName = item.Substring(saveLocation.Length);
-            LevelManager.levels.Add(levelName);
+            Level levelObj = SaveAndLoadManager.GetLevelConfig(new Level(levelName));
+            LevelManager.levels.Add(levelObj);
             level.GetComponent<Button>().onClick.AddListener(delegate { StartMapMaker(levelName); });
         }
     }
@@ -62,7 +63,8 @@ public class MapMakerMenu : MonoBehaviour
             level.transform.GetChild(0).GetComponent<Text>().text = newLevel;
 
             string levelName = newLevel.Substring(saveLocation.Length);
-            LevelManager.levels.Add(levelName);
+            Level levelObj = SaveAndLoadManager.GetLevelConfig(new Level(levelName));
+            LevelManager.levels.Add(levelObj);
             level.GetComponent<Button>().onClick.AddListener(delegate { StartMapMaker(levelName); });            
         }
     }
