@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public static List<string> levels = new List<string>();
+    public static List<Level> levels = new List<Level>();
 
     public GameObject itemPool;
     public GameObject worldPrefab;
@@ -142,5 +142,36 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+    }
+
+
+}
+
+public class Level
+{
+    public string levelName { get; set; }
+    public int size { get; set; }
+    public bool unlocked;
+
+    public Level(string name = "", int size = 0, bool unlocked = false)
+    {
+        levelName = name;
+        this.size = size;
+        this.unlocked = unlocked;
+    }
+
+    public override bool Equals(object obj)
+    {
+        return levelName.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return levelName;
     }
 }

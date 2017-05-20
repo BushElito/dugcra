@@ -21,7 +21,11 @@ public class LoadGrids : MonoBehaviour
             }
         }
 
-        SaveAndLoadManager.GetLevelConfig();
+        if (!LevelManager.isRandom)
+        {
+            SaveAndLoadManager.GetLevelConfig();
+            SaveAndLoadManager.SaveLevelConfig(new Level(LevelManager.levelName, Grid.gridSize, true));
+        }       
     }
 
     void Update()

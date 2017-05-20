@@ -61,8 +61,8 @@ public class Change_scene : MonoBehaviour
         try
         {
             if (LevelManager.levelIndex + 1 < LevelManager.levels.Count)
-            {
-                LevelManager.levelName = LevelManager.levels[LevelManager.levelIndex + 1];
+            {                
+                LevelManager.levelName = LevelManager.levels[LevelManager.levelIndex + 1].ToString();
             }
 
             Time.timeScale = 1;
