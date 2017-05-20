@@ -21,6 +21,10 @@ GameObject:
   - component: {fileID: 4000010363874534}
   - component: {fileID: 198000012518550084}
   - component: {fileID: 199000013845495664}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 114040386630935310}
+>>>>>>> origin/master
   m_Layer: 0
   m_Name: Death particals
   m_TagString: Untagged
@@ -41,6 +45,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!114 &114040386630935310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013144623386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a52abf396ef46a47b0d9c16a896cd8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 2
+>>>>>>> origin/master
 --- !u!198 &198000012518550084
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -102,7 +121,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       minMaxState: 3
-      scalar: 0.4
+      scalar: 0.8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -120,7 +139,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.50000006
+          value: 0.375
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2096,7 +2115,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     type: 1
-    collisionMode: 1
+    collisionMode: 0
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}

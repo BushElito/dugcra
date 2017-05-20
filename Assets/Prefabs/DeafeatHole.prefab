@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4499044087935354}
   - component: {fileID: 198352428843062078}
   - component: {fileID: 199686259143984938}
-  - component: {fileID: 114057551890146896}
+  - component: {fileID: 114867799822966156}
   m_Layer: 0
   m_Name: DeafeatHole
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &114057551890146896
+--- !u!114 &114867799822966156
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,9 +50,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1281986771722684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 6a52abf396ef46a47b0d9c16a896cd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 2
 --- !u!198 &198352428843062078
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -239,8 +240,8 @@ ParticleSystem:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minColor: {r: 0.1764706, g: 0.17254902, b: 0.18431373, a: 1}
+      maxColor: {r: 0.48235297, g: 0.5019608, b: 0.49803925, a: 1}
     startSize:
       minMaxState: 3
       scalar: 0.25
@@ -445,7 +446,7 @@ ParticleSystem:
     rotation3D: 0
     gravityModifier:
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float turnDelay;
+    public GameObject moveEffect;
     private Rigidbody2D rb2D;
     private bool idle;
     public LayerMask fog;
@@ -131,8 +132,15 @@ public class Player : MonoBehaviour
             if (!walldetect && !fogDetect)
             {
                 gameSounds.PlaySound(rnd.Next(0, 2));
+<<<<<<< HEAD
                 rb2D.MovePosition(end);
             }
+=======
+                Instantiate(moveEffect, transform.position, Quaternion.identity);
+                rb2D.MovePosition(end);
+                
+            }            
+>>>>>>> origin/master
         }
         StartCoroutine(Delay());
     }
