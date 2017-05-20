@@ -2012,7 +2012,7 @@ RectTransform:
   m_GameObject: {fileID: 625176037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1450095376}
   m_Father: {fileID: 1755556721}
@@ -4802,8 +4802,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 488756834}
-        m_MethodName: ChangeToScene
-        m_Mode: 3
+        m_MethodName: ToRandomLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5355,7 +5355,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d46a0f2981fceda4ca4f7c779db187f9, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
