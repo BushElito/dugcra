@@ -132,15 +132,10 @@ public class Player : MonoBehaviour
             if (!walldetect && !fogDetect)
             {
                 gameSounds.PlaySound(rnd.Next(0, 2));
-<<<<<<< HEAD
+
                 rb2D.MovePosition(end);
-            }
-=======
                 Instantiate(moveEffect, transform.position, Quaternion.identity);
-                rb2D.MovePosition(end);
-                
             }            
->>>>>>> origin/master
         }
         StartCoroutine(Delay());
     }

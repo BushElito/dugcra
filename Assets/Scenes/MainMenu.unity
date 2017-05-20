@@ -1367,7 +1367,7 @@ MonoBehaviour:
   resolutionDropDown: {fileID: 1102955471}
   musicVolumeSlider: {fileID: 898953731}
   backButton: {fileID: 1322877628}
-  musicSource: {fileID: 1448786235}
+  musicSource: {fileID: 1828655547}
   soundSource: {fileID: 538307239}
 --- !u!1 &488756833
 GameObject:
@@ -2121,7 +2121,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Load game
-
 '
 --- !u!222 &636217853
 CanvasRenderer:
@@ -5282,7 +5281,6 @@ GameObject:
   - component: {fileID: 1448786232}
   - component: {fileID: 1448786231}
   - component: {fileID: 1448786230}
-  - component: {fileID: 1448786235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5360,86 +5358,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1448786235
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448786229}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b6b0a2335ca197e46b5b30f78afcea46, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &1450095375
 GameObject:
   m_ObjectHideFlags: 0
@@ -5508,7 +5426,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
   m_Text: 'DugCra
-
     The Hunt Of Truth'
 --- !u!222 &1450095378
 CanvasRenderer:
@@ -6161,7 +6078,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793100264}
-<<<<<<< HEAD
 --- !u!1 &1828655542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6273,8 +6189,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-=======
->>>>>>> origin/master
 --- !u!1 &1845853687
 GameObject:
   m_ObjectHideFlags: 0
