@@ -1589,7 +1589,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cf5953c06b73c8e4492116a87a237b17, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1651,6 +1651,7 @@ MonoBehaviour:
   game_finished: {fileID: 1892682983387032}
   scoreManager: {fileID: 114807387371039576}
   game_over_text: {fileID: 114624583266190814}
+  anim: {fileID: 0}
 --- !u!114 &114013027564291378
 MonoBehaviour:
   m_ObjectHideFlags: 1
