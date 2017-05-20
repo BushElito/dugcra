@@ -145,7 +145,6 @@ public class GridGenerator
 
     public Grid GridItemGen(Grid grid)
     {
-        List<GridTile.ContainedObject> chosenObjects = new List<GridTile.ContainedObject>();
         GridToMaze(grid);
         List<Vector2> validPos = new List<Vector2>();
         List<Vector2> validNext = new List<Vector2>();
