@@ -17,7 +17,7 @@ public class HighScoreMainMenu : MonoBehaviour {
         highscore2 = PlayerPrefs.GetInt("highscore2", highscore2);
         highscore3 = PlayerPrefs.GetInt("highscore3", highscore3);
 
-        stringEcho = (String.Format("1st: {0,-10}\n2nd: {1,-10}\n3rd: {2,-10}"
+        stringEcho = (string.Format("1st: {0,-10}\n2nd: {1,-10}\n3rd: {2,-10}"
             , highscore, highscore2, highscore3));
 
         highscoreMainText.text = stringEcho;

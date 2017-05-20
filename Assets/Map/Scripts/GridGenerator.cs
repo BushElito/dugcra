@@ -50,7 +50,7 @@ public class GridGenerator
                     }
                     else grid = GridTileGen(grid, x, y, GridTile.TileTypes.Ground);
                     if (maze[xx % 16][yy % 16].isStart)
-                    {                        
+                    {
                         startingPoint = new WorldPos(x - grid.pos.x, y - grid.pos.y);
                         startingGrid = new WorldPos(x, y);
                         isPointGenerated = true;
@@ -147,6 +147,9 @@ public class GridGenerator
     {
         List<GridTile.ContainedObject> chosenObjects = new List<GridTile.ContainedObject>();
         GridToMaze(grid);
+        List<Vector2> validPos = new List<Vector2>();
+        List<Vector2> validNext = new List<Vector2>();
+
         for (int x = 0; x < Grid.gridSize; x++)
         {
             for (int y = 0; y < Grid.gridSize; y++)
@@ -155,91 +158,183 @@ public class GridGenerator
                 {
                     grid.tiles[x, y].containedObject = GridTile.ContainedObject.StartingPoint;
                 }
-                if (maze[x][y].isWall == false && maze[x][y].up != null && maze[x][y].down != null && maze[x][y].right != null && maze[x][y].left != null)
+                else if (!maze[x][y].isWall && maze[x][y].up != null && maze[x][y].down != null && maze[x][y].right != null && maze[x][y].left != null)
                 {
-                    if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == true && maze[x][y].right.isWall == true && maze[x][y].left.isWall == false)
+                    if (maze[x][y].up.isWall && maze[x][y].down.isWall)
                     {
-                        switch (chosenObjects.LastOrDefault())
+                        if (maze[x][y].right.isWall || maze[x][y].left.isWall)
                         {
-                            case GridTile.ContainedObject.Ladder:
-                                chosenObjects.Add(GridTile.ContainedObject.Spear);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
-                                grid.tiles[x - 1, y].containedObject = GridTile.ContainedObject.Pit;
-                                break;
-                            case GridTile.ContainedObject.Spear:
-                                chosenObjects.Add(GridTile.ContainedObject.Chest);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
-                                grid.tiles[x - 1, y].containedObject = GridTile.ContainedObject.Enemy;
-                                break;
-                            default:
-                                chosenObjects.Add(GridTile.ContainedObject.Ladder);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
-                                break;
+                            validPos.Add(new Vector2(x, y));
+                            if (maze[x][y].right.isWall)
+                            {
+                                validNext.Add(new Vector2(x - 1, y));
+                            }
+                            else if (maze[x][y].left.isWall)
+                            {
+                                validNext.Add(new Vector2(x + 1, y));
+                            }
                         }
+
                     }
-                    else if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == true && maze[x][y].right.isWall == false && maze[x][y].left.isWall == true)
+                    else if (maze[x][y].right.isWall && maze[x][y].left.isWall)
                     {
-                        switch (chosenObjects.LastOrDefault())
+                        if (maze[x][y].up.isWall || maze[x][y].down.isWall)
                         {
-                            case GridTile.ContainedObject.Ladder:
-                                chosenObjects.Add(GridTile.ContainedObject.Spear);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
-                                grid.tiles[x + 1, y].containedObject = GridTile.ContainedObject.Pit;
-                                break;
-                            case GridTile.ContainedObject.Spear:
-                                chosenObjects.Add(GridTile.ContainedObject.Chest);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
-                                grid.tiles[x + 1, y].containedObject = GridTile.ContainedObject.Enemy;
-                                break;
-                            default:
-                                chosenObjects.Add(GridTile.ContainedObject.Ladder);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
-                                break;
-                        }
-                    }
-                    else if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == false && maze[x][y].right.isWall == true && maze[x][y].left.isWall == true)
-                    {
-                        switch (chosenObjects.LastOrDefault())
-                        {
-                            case GridTile.ContainedObject.Ladder:
-                                chosenObjects.Add(GridTile.ContainedObject.Spear);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
-                                grid.tiles[x, y + 1].containedObject = GridTile.ContainedObject.Pit;
-                                break;
-                            case GridTile.ContainedObject.Spear:
-                                chosenObjects.Add(GridTile.ContainedObject.Chest);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
-                                grid.tiles[x, y + 1].containedObject = GridTile.ContainedObject.Enemy;
-                                break;
-                            default:
-                                chosenObjects.Add(GridTile.ContainedObject.Ladder);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
-                                break;
-                        }
-                    }
-                    else if (maze[x][y].up.isWall == false && maze[x][y].down.isWall == true && maze[x][y].right.isWall == true && maze[x][y].left.isWall == true)
-                    {
-                        switch (chosenObjects.LastOrDefault())
-                        {
-                            case GridTile.ContainedObject.Ladder:
-                                chosenObjects.Add(GridTile.ContainedObject.Spear);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
-                                grid.tiles[x, y - 1].containedObject = GridTile.ContainedObject.Pit;
-                                break;
-                            case GridTile.ContainedObject.Spear:
-                                chosenObjects.Add(GridTile.ContainedObject.Chest);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
-                                grid.tiles[x, y - 1].containedObject = GridTile.ContainedObject.Enemy;
-                                break;
-                            default:
-                                chosenObjects.Add(GridTile.ContainedObject.Ladder);
-                                grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
-                                break;
+                            validPos.Add(new Vector2(x, y));
+                            if (maze[x][y].up.isWall)
+                            {
+                                validNext.Add(new Vector2(x, y + 1));
+                            }
+                            else if (maze[x][y].down.isWall)
+                            {
+                                validNext.Add(new Vector2(x, y - 1));
+                            }
                         }
                     }
                 }
             }
         }
+
+        bool placedChest = false;
+        bool placedSpear = false;
+        Vector2 pos = new Vector2();
+        Vector2 next = new Vector2();
+        int max = validPos.Count;
+        int repeat = 0;
+
+        while (validPos.Count > 0 && repeat < 5)
+        {
+            int rand = UnityEngine.Random.Range(0, validPos.Count);
+            pos = validPos[rand];
+            next = validNext[rand];
+
+            if (!placedChest)
+            {                
+                grid.tiles[(int)pos.x, (int)pos.y].containedObject = GridTile.ContainedObject.Chest;
+                if (max > 1)
+                {
+                    grid.tiles[(int)next.x, (int)next.y].containedObject = GridTile.ContainedObject.Enemy;
+                }
+                placedChest = true;
+            }
+            else if (!placedSpear && max > 1)
+            {
+                grid.tiles[(int)pos.x, (int)pos.y].containedObject = GridTile.ContainedObject.Spear;
+                if (max > 2)
+                {
+                    grid.tiles[(int)next.x, (int)next.y].containedObject = GridTile.ContainedObject.Pit;
+                }
+                placedSpear = true;
+            }
+            else
+            {
+                grid.tiles[(int)pos.x, (int)pos.y].containedObject = GridTile.ContainedObject.Ladder;
+                //if (max > 3 && validPos.Count > 1)
+                //{
+                //    grid.tiles[(int)next.x, (int)next.y].containedObject = GridTile.ContainedObject.Pit;
+                //}                
+            }
+            validPos.RemoveAt(rand);
+            validNext.RemoveAt(rand);
+            repeat++;
+        }
+
+        #region
+        //for (int x = 0; x < Grid.gridSize; x++)
+        //{
+        //    for (int y = 0; y < Grid.gridSize; y++)
+        //    {
+        //        if (maze[x][y].isStart)
+        //        {
+        //            grid.tiles[x, y].containedObject = GridTile.ContainedObject.StartingPoint;
+        //        }
+        //        if (maze[x][y].isWall == false && maze[x][y].up != null && maze[x][y].down != null && maze[x][y].right != null && maze[x][y].left != null)
+        //        {
+        //            if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == true && maze[x][y].right.isWall == true && maze[x][y].left.isWall == false)
+        //            {
+        //                switch (chosenObjects.LastOrDefault())
+        //                {
+        //                    case GridTile.ContainedObject.Ladder:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Spear);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
+        //                        grid.tiles[x - 1, y].containedObject = GridTile.ContainedObject.Pit;
+        //                        break;
+        //                    case GridTile.ContainedObject.Spear:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Chest);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
+        //                        grid.tiles[x - 1, y].containedObject = GridTile.ContainedObject.Enemy;
+        //                        break;
+        //                    default:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Ladder);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
+        //                        break;
+        //                }
+        //            }
+        //            else if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == true && maze[x][y].right.isWall == false && maze[x][y].left.isWall == true)
+        //            {
+        //                switch (chosenObjects.LastOrDefault())
+        //                {
+        //                    case GridTile.ContainedObject.Ladder:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Spear);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
+        //                        grid.tiles[x + 1, y].containedObject = GridTile.ContainedObject.Pit;
+        //                        break;
+        //                    case GridTile.ContainedObject.Spear:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Chest);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
+        //                        grid.tiles[x + 1, y].containedObject = GridTile.ContainedObject.Enemy;
+        //                        break;
+        //                    default:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Ladder);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
+        //                        break;
+        //                }
+        //            }
+        //            else if (maze[x][y].up.isWall == true && maze[x][y].down.isWall == false && maze[x][y].right.isWall == true && maze[x][y].left.isWall == true)
+        //            {
+        //                switch (chosenObjects.LastOrDefault())
+        //                {
+        //                    case GridTile.ContainedObject.Ladder:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Spear);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
+        //                        grid.tiles[x, y + 1].containedObject = GridTile.ContainedObject.Pit;
+        //                        break;
+        //                    case GridTile.ContainedObject.Spear:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Chest);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
+        //                        grid.tiles[x, y + 1].containedObject = GridTile.ContainedObject.Enemy;
+        //                        break;
+        //                    default:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Ladder);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
+        //                        break;
+        //                }
+        //            }
+        //            else if (maze[x][y].up.isWall == false && maze[x][y].down.isWall == true && maze[x][y].right.isWall == true && maze[x][y].left.isWall == true)
+        //            {
+        //                switch (chosenObjects.LastOrDefault())
+        //                {
+        //                    case GridTile.ContainedObject.Ladder:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Spear);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Spear;
+        //                        grid.tiles[x, y - 1].containedObject = GridTile.ContainedObject.Pit;
+        //                        break;
+        //                    case GridTile.ContainedObject.Spear:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Chest);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Chest;
+        //                        grid.tiles[x, y - 1].containedObject = GridTile.ContainedObject.Enemy;
+        //                        break;
+        //                    default:
+        //                        chosenObjects.Add(GridTile.ContainedObject.Ladder);
+        //                        grid.tiles[x, y].containedObject = GridTile.ContainedObject.Ladder;
+        //                        break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        #endregion
+
         return grid;
     }
 
