@@ -72,8 +72,12 @@ public class Change_scene : MonoBehaviour
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(0);
-            throw;
         }
+    }
+
+    public void ClearLevels()
+    {
+        SaveAndLoadManager.ClearAllLevelConfigs();
     }
 
     public void ExitGame()

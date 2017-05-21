@@ -100,7 +100,7 @@ public static class SaveAndLoadManager
             FileStream fi = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fi);
             writer.WriteLine("gridSize=" + Grid.gridSize);
-            writer.Write("unlocked=false");
+            writer.WriteLine("unlocked=false");
             writer.Close();
             fi.Close();
         }
@@ -127,7 +127,7 @@ public static class SaveAndLoadManager
             FileStream fi = new FileStream(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fi);
             writer.WriteLine("gridSize=" + Grid.gridSize);
-            writer.Write("unlocked=" + level.unlocked);
+            writer.WriteLine("unlocked=" + level.unlocked);
             writer.Close();
             fi.Close();
         }
@@ -157,11 +157,51 @@ public static class SaveAndLoadManager
     {
         File.WriteAllText(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", string.Empty);
         FileStream f = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
-        
-        StreamWriter writer = new StreamWriter(f);                
+
+        StreamWriter writer = new StreamWriter(f);
         writer.WriteLine("gridSize=" + Grid.gridSize);
-        writer.Write("unlocked=" + level.unlocked);
+        writer.WriteLine("unlocked=" + level.unlocked);
         writer.Close();
         f.Close();
+    }
+
+    public static void ClearAllLevelConfigs()
+    {
+        if (!Directory.Exists("Levels/"))
+        {
+            Directory.CreateDirectory("Levels/");
+        }
+        FileStream f;
+        StreamWriter writer;
+        StreamReader reader;
+        var directories = new List<string>(Directory.GetDirectories("Levels/"));
+        directories.Sort(new NaturalStringComparer());
+        foreach (var item in directories)
+        {            
+            f = new FileStream(item + "/levelConfig.cfg", FileMode.OpenOrCreate);
+            reader = new StreamReader(f);
+            int size = Grid.gridSize;
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line.StartsWith("gridSize="))
+                {
+                    int index = line.IndexOf('=');
+                    size = int.Parse(line.Substring(index + 1));
+                }
+            }
+            reader.Close();
+            f.Close();
+
+            File.WriteAllText(item + "/levelConfig.cfg", string.Empty);
+            f = new FileStream(item + "/levelConfig.cfg", FileMode.OpenOrCreate);
+
+            writer = new StreamWriter(f);
+
+            writer.WriteLine("gridSize=" + size);
+            writer.WriteLine("unlocked=False");
+            writer.Close();
+            f.Close();
+        }
     }
 }
