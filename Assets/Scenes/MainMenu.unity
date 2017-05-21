@@ -1760,6 +1760,7 @@ GameObject:
   - component: {fileID: 538307236}
   - component: {fileID: 538307235}
   - component: {fileID: 538307239}
+  - component: {fileID: 538307240}
   m_Layer: 5
   m_Name: Main canvas
   m_TagString: Untagged
@@ -1927,6 +1928,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &538307240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538307234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba413d4c3a467f14eb75e58adc7aabe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: {fileID: 857826003}
+  levelPrefab: {fileID: 1925052487481884, guid: c26c30c880b34be42b26311fc37a8851,
+    type: 2}
 --- !u!1 &541600636
 GameObject:
   m_ObjectHideFlags: 0
@@ -7608,7 +7623,6 @@ GameObject:
   - component: {fileID: 2097908689}
   - component: {fileID: 2097908691}
   - component: {fileID: 2097908690}
-  - component: {fileID: 2097908692}
   m_Layer: 5
   m_Name: Levels
   m_TagString: Untagged
@@ -7669,20 +7683,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097908688}
---- !u!114 &2097908692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2097908688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba413d4c3a467f14eb75e58adc7aabe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: {fileID: 857826003}
-  levelPrefab: {fileID: 1925052487481884, guid: c26c30c880b34be42b26311fc37a8851,
-    type: 2}
 --- !u!1 &2098004996
 GameObject:
   m_ObjectHideFlags: 0

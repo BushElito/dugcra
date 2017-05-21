@@ -39,13 +39,7 @@ public class Change_scene : MonoBehaviour
     {
         try
         {
-            if (!Directory.Exists("Levels/"))
-            {
-                Directory.CreateDirectory("Levels/");
-            }
-            var dir = new List<string>(Directory.GetDirectories("Levels/"));
-            dir.Sort(new NaturalStringComparer());
-            LevelManager.levelName = dir[0].Substring(7);
+            LevelManager.levelName = LevelManager.levels[0].ToString();
             LevelManager.isRandom = false;
         }
         catch (System.Exception)
@@ -61,7 +55,7 @@ public class Change_scene : MonoBehaviour
         try
         {
             if (LevelManager.levelIndex + 1 < LevelManager.levels.Count)
-            {                
+            {
                 LevelManager.levelName = LevelManager.levels[LevelManager.levelIndex + 1].ToString();
             }
 
