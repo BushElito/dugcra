@@ -15,6 +15,7 @@ public class FillLevels : MonoBehaviour
 
     private void Awake()
     {
+        SaveAndLoadManager.gridSaveFolder = "Levels";
         LevelManager.levels.Clear();
         if (!Directory.Exists("Levels/"))
         {
