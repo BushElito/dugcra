@@ -4539,7 +4539,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sound
+  m_Text: Mute sound
 --- !u!114 &114980819162440354
 MonoBehaviour:
   m_ObjectHideFlags: 1
