@@ -9,6 +9,8 @@ public class mapEscape : MonoBehaviour {
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject pauseCanvas;
+    public GameObject inventory;
+
 
     // Use this for initialization
     void Start () {
@@ -23,6 +25,7 @@ public class mapEscape : MonoBehaviour {
             {
                 map.SetActive(false);
                 mapCamera.SetActive(false);
+                inventory.SetActive(true);
                 pauseMenu.SetActive(true);
             }
         }

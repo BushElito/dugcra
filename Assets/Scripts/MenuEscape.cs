@@ -9,6 +9,7 @@ public class MenuEscape : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject levelsMenu;
     public GameObject HighScoreMenu;
+    public GameObject customMapsMenu;
 
     // Use this for initialization
     void Start()
@@ -37,6 +38,11 @@ public class MenuEscape : MonoBehaviour
                 {
                     levelsMenu.SetActive(false);
                     mainMenu.SetActive(true);
+                }
+                else if (customMapsMenu.activeInHierarchy)
+                {
+                    customMapsMenu.SetActive(false);
+                    newGameMenu.SetActive(true);
                 }
                 else
                 {
