@@ -10,7 +10,6 @@ public class PlayerItems : MonoBehaviour
     private int spear;
     private int ladder;
     static private int level;
-    static private int endLevel=5;
     private static int pointsForItem;
     private static int pointsForEnemy;
     private static int pointsForChest;
@@ -109,7 +108,7 @@ public class PlayerItems : MonoBehaviour
         }
         else if (other.tag == "Chest")
         {
-            if(LevelManager.levelIndex + 1 < LevelManager.levels.Count)
+            if(LevelManager.levelIndex + 1 < LevelManager.levels.Count && !LevelManager.isCustom)
             {
                 level++;
                 scoreManager.AddPoints(pointsForChest);

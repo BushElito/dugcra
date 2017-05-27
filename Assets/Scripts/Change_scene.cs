@@ -17,10 +17,11 @@ public class Change_scene : MonoBehaviour
         SceneManager.LoadScene(sceneToChangeTo);
     }
 
-    public static void ChangeToLevel(int levelScene, string levelName, bool random)
+    public static void ChangeToLevel(int levelScene, string levelName, bool random, bool custom = false)
     {
         LevelManager.levelName = levelName;
         LevelManager.isRandom = random;
+        LevelManager.isCustom = custom;
 
         Time.timeScale = 1;
         SceneManager.LoadScene(levelScene);
@@ -30,6 +31,7 @@ public class Change_scene : MonoBehaviour
     {
         LevelManager.levelName = "";
         LevelManager.isRandom = true;
+        LevelManager.isCustom = false;
 
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
@@ -41,10 +43,12 @@ public class Change_scene : MonoBehaviour
         {
             LevelManager.levelName = LevelManager.levels[0].ToString();
             LevelManager.isRandom = false;
+            LevelManager.isCustom = false;
         }
         catch (System.Exception)
         {
             LevelManager.isRandom = true;
+            LevelManager.isCustom = false;
         }
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
@@ -54,7 +58,7 @@ public class Change_scene : MonoBehaviour
     {
         try
         {
-            if (LevelManager.levelIndex + 1 < LevelManager.levels.Count)
+            if (LevelManager.levelIndex + 1 < LevelManager.levels.Count && !LevelManager.isCustom)
             {
                 LevelManager.levelName = LevelManager.levels[LevelManager.levelIndex + 1].ToString();
             }

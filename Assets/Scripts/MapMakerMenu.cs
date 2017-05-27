@@ -20,7 +20,7 @@ public class MapMakerMenu : MonoBehaviour
 
     private void Awake()
     {
-        SaveAndLoadManager.gridSaveFolder = "CustomLevels";
+        SaveAndLoadManager.gridSaveFolder = "CustomLevels/";
         LoadLevels();
         levelManager = GetComponent<LevelManager>();
         levelManager.loaded = true;

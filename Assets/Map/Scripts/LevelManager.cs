@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static List<Level> levels = new List<Level>();
+    public static List<Level> customLevels = new List<Level>();
 
     public GameObject itemPool;
     public GameObject worldPrefab;
@@ -12,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public GameObject playerPrefab;
     public static string levelName;
     public static bool isRandom;
+    public static bool isCustom;
     public static int levelIndex;
     public List<GameObject> spawnables;
     public bool loaded = false;
@@ -38,7 +40,15 @@ public class LevelManager : MonoBehaviour
         {
             return;
         }
-        SaveAndLoadManager.gridSaveFolder = "Levels";
+        if (isCustom)
+        {
+            SaveAndLoadManager.gridSaveFolder = SaveAndLoadManager.CUSTOM_LEVELS_FOLDER;
+        }
+        else
+        {
+            SaveAndLoadManager.gridSaveFolder = SaveAndLoadManager.LEVELS_FOLDER;
+        }
+       
         levelIndex = levels.FindIndex(o => o.Equals(levelName));
 
         GameObject world = Instantiate(worldPrefab);

@@ -2545,6 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 857826003}
+  contentCL: {fileID: 44889993}
   levelPrefab: {fileID: 1925052487481884, guid: c26c30c880b34be42b26311fc37a8851,
     type: 2}
 --- !u!1 &541600636

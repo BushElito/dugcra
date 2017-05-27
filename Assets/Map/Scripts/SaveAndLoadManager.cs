@@ -6,14 +6,16 @@ using System;
 
 public static class SaveAndLoadManager
 {
+    public const string LEVELS_FOLDER = "Levels/";
+    public const string CUSTOM_LEVELS_FOLDER = "CustomLevels/";
 
     public static string windowsSaveLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-    public static string gridSaveFolder = "Levels";
+    public static string gridSaveFolder = "Levels/";
 
     public static string SaveLocation(string name, string worldName = "world")
     {
-        string saveLocation = gridSaveFolder + "/" + worldName + "/";
+        string saveLocation = gridSaveFolder + worldName + "/";
 
         if (!Directory.Exists(saveLocation))
         {
@@ -95,9 +97,9 @@ public static class SaveAndLoadManager
 
     public static void GetLevelConfig()
     {
-        if (!File.Exists(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg"))
+        if (!File.Exists(gridSaveFolder + LevelManager.levelName + "/levelConfig.cfg"))
         {
-            FileStream fi = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+            FileStream fi = new FileStream(gridSaveFolder + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fi);
             writer.WriteLine("gridSize=" + Grid.gridSize);
             writer.WriteLine("unlocked=false");
@@ -105,7 +107,7 @@ public static class SaveAndLoadManager
             fi.Close();
         }
 
-        FileStream f = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.Open);
+        FileStream f = new FileStream(gridSaveFolder + LevelManager.levelName + "/levelConfig.cfg", FileMode.Open);
         StreamReader reader = new StreamReader(f);
         while (!reader.EndOfStream)
         {
@@ -122,9 +124,9 @@ public static class SaveAndLoadManager
 
     public static Level GetLevelConfig(Level level)
     {
-        if (!File.Exists(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg"))
+        if (!File.Exists(gridSaveFolder + level.levelName + "/levelConfig.cfg"))
         {
-            FileStream fi = new FileStream(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+            FileStream fi = new FileStream(gridSaveFolder + level.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
             StreamWriter writer = new StreamWriter(fi);
             writer.WriteLine("gridSize=" + Grid.gridSize);
             writer.WriteLine("unlocked=" + level.unlocked);
@@ -132,7 +134,7 @@ public static class SaveAndLoadManager
             fi.Close();
         }
 
-        FileStream f = new FileStream(gridSaveFolder + "/" + level.levelName + "/levelConfig.cfg", FileMode.Open);
+        FileStream f = new FileStream(gridSaveFolder + level.levelName + "/levelConfig.cfg", FileMode.Open);
         StreamReader reader = new StreamReader(f);
         while (!reader.EndOfStream)
         {
@@ -155,8 +157,8 @@ public static class SaveAndLoadManager
 
     public static void SaveLevelConfig(Level level)
     {
-        File.WriteAllText(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", string.Empty);
-        FileStream f = new FileStream(gridSaveFolder + "/" + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
+        File.WriteAllText(gridSaveFolder + LevelManager.levelName + "/levelConfig.cfg", string.Empty);
+        FileStream f = new FileStream(gridSaveFolder + LevelManager.levelName + "/levelConfig.cfg", FileMode.OpenOrCreate);
 
         StreamWriter writer = new StreamWriter(f);
         writer.WriteLine("gridSize=" + Grid.gridSize);
