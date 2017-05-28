@@ -2693,7 +2693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You found all the trasure but never your happiness...
+  m_Text: You found all the treasure but never your happiness...
 --- !u!114 &114414544342760092
 MonoBehaviour:
   m_ObjectHideFlags: 1
